@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "RRR",
+    " B ",
+    " B "
+  ],
+  "key": {
+    "R": [
+      {
+        "item": "minecraft:cobblestone"
+      },
+      {
+        "item": "minecraft:mossy_cobblestone"
+      }
+    ],
+    "B": {
+      "item": "minecraft:bone"
+    }
+  },
+  "result": {
+    "item": "minecraft:stone_pickaxe",
+    "data": 0
+  }
+}
