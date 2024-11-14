@@ -1,0 +1,27 @@
+{
+  "item.flint.strike.nanpa_1": {
+    "category": "item",
+    "subtitle": "item.flint.strike.nanpa_1",
+    "sounds": [{"name": "ffr:item/flint/strike/nanpa_1", "stream": true}]
+  },
+  "item.flint.strike.nanpa_2": {
+    "category": "item",
+    "subtitle": "item.flint.strike.nanpa_2",
+    "sounds": [{"name": "ffr:item/flint/strike/nanpa_2", "stream": true}]
+  },
+  "item.flint.strike.nanpa_3": {
+    "category": "item",
+    "subtitle": "item.flint.strike.nanpa_3",
+    "sounds": [{"name": "ffr:item/flint/strike/nanpa_3", "stream": true}]
+  },
+  "item.flint.knap": {
+    "category": "item",
+    "subtitle": "item.flint.knap",
+    "sounds": [{"name": "ffr:item/flint/knap", "stream": true}]
+  },
+  "item.granite_grind": {
+    "category": "item",
+    "subtitle": "item.granite.grind",
+    "sounds": [{"name": "ffr:item/granite/grind", "stream": true}]
+  }
+}
