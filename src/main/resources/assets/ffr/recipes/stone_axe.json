@@ -1,8 +1,8 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "RRR",
-    " B ",
+    " RR",
+    " BR",
     " B "
   ],
   "key": {
@@ -21,7 +21,7 @@
     }
   },
   "result": {
-    "item": "minecraft:stone_pickaxe",
+    "item": "minecraft:stone_axe",
     "data": 0
   }
 }

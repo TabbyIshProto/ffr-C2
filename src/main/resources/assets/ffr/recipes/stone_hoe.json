@@ -1,7 +1,7 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "RRR",
+    " RR",
     " B ",
     " B "
   ],
@@ -21,7 +21,7 @@
     }
   },
   "result": {
-    "item": "minecraft:stone_pickaxe",
+    "item": "minecraft:stone_hoe",
     "data": 0
   }
 }
