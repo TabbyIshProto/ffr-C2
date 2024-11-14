@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " R ",
+    " R ",
+    " H "
+  ],
+  "key": {
+    "R": [
+      {
+        "type": "forge:ore_dict",
+        "ore": "cobblestone"
+      },
+      {
+        "item": "minecraft:mossy_cobblestone"
+      }
+    ],
+    "H": {
+      "item": "ffr:handle_bone"
+    }
+  },
+  "result": {
+    "item": "minecraft:stone_sword",
+    "data": 0
+  }
+}
