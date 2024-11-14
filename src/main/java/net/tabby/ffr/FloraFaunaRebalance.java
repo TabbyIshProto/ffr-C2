@@ -78,6 +78,7 @@ public class FloraFaunaRebalance {
         for (Object item : RecipeRemover.UNDESIRED) {
             new RecipeRemover(item);
         }
+
     }
 
     @EventHandler

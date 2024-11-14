@@ -12,8 +12,11 @@ import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
+import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
+import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.tabby.ffr.Tags;
@@ -67,5 +70,27 @@ public class ev {
 
     protected static float next(Random r, float lwr, float upr) {
         return lwr + r.nextFloat() * (upr - lwr);
+    }
+
+    @SubscribeEvent
+    public static void lowerBreakingSpeed(PlayerEvent.BreakSpeed event) {
+        EntityPlayer ply = event.getEntityPlayer();
+        if (ply.getHeldItemMainhand().isEmpty() && !ply.isCreative()) {
+            event.setNewSpeed(event.getOriginalSpeed() * 0.5f);
+        }
+    }
+
+    @SubscribeEvent(priority = EventPriority.LOWEST)
+    public static void preventWoodDrops(BlockEvent.HarvestDropsEvent event) {
+        EntityPlayer hrv = event.getHarvester();
+        if (hrv.getHeldItemMainhand().isEmpty() && !hrv.isCreative()) {
+            if (event.getState().getMaterial() == Material.WOOD) {
+                event.getDrops().clear();
+            }
+        }
+    }
+
+    protected static <T> boolean nn(T thing) {
+        return thing != null;
     }
 }
