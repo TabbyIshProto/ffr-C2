@@ -86,7 +86,7 @@ public class ev {
 
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public static void preventWoodDrops(BlockEvent.HarvestDropsEvent event) { //# TODO: for 1) mining with a seed still gets you logs, for 2) logs can still be split into planks, sticks, for 3) pebbles and falling sand
-        if (event.getState().getMaterial() == Material.WOOD) {
+        if (event.getState().getMaterial() == Material.WOOD) { //# TODO: for 11) major crash when tnt explodes and this event modifies drops...
             EntityPlayer hrv = event.getHarvester();
             if (hrv.getHeldItemMainhand().isEmpty() && !hrv.isCreative()) {
                 event.getDrops().clear();
