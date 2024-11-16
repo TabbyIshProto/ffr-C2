@@ -86,14 +86,16 @@ public class ev {
 
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public static void preventWoodDrops(BlockEvent.HarvestDropsEvent event) { //# TODO: for 1) mining with a seed still gets you logs, for 2) logs can still be split into planks, sticks, for 3) pebbles and falling sand
-        if (event.getState().getMaterial() == Material.WOOD) { //# TODO: for 11) major crash when tnt explodes and this event modifies drops...
-            EntityPlayer hrv = event.getHarvester();
-            if (hrv.getHeldItemMainhand().isEmpty() && !hrv.isCreative()) {
-                event.getDrops().clear();
-            } else if (hrv.getHeldItemMainhand().getItem().getIsRepairable(hrv.getHeldItemMainhand(), Items.FLINT.getDefaultInstance())) {
-                event.getDrops().clear();
-            }
-        } //# TODO: make table of which Material + tool + block combinations are and aren't mineable; should drop item...
+        if (event.getHarvester() != null) {
+            if (event.getState().getMaterial() == Material.WOOD) {
+                EntityPlayer hrv = event.getHarvester();
+                if (hrv.getHeldItemMainhand().isEmpty() && !hrv.isCreative()) {
+                    event.getDrops().clear();
+                } else if (hrv.getHeldItemMainhand().getItem().getIsRepairable(hrv.getHeldItemMainhand(), Items.FLINT.getDefaultInstance())) {
+                    event.getDrops().clear();
+                }
+            } //# TODO: make table of which Material + tool + block combinations are and aren't mineable; should drop item...
+        }
     }
 
     protected static <T> boolean nn(T thing) {
