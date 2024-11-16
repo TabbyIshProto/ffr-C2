@@ -1,7 +1,8 @@
-package net.tabby.ffr;
+package net.tabby.ffr.registry;
 
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
+import net.tabby.ffr.Tags;
 
 public class sh {
     public static SoundEvent FLINT_STRIKE_NANPA1 = new SoundEvent(new ResourceLocation(Tags.MODID, "item.flint.strike.nanpa_1")).setRegistryName("item.flint.strike.nanpa_1");
