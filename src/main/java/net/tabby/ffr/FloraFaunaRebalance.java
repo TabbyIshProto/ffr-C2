@@ -17,8 +17,12 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.tabby.ffr.Item.recipe.RecipeRemover;
 import net.tabby.ffr.Item.tool.Tier;
+import net.tabby.ffr.registry.ii;
+import net.tabby.ffr.registry.sh;
+import net.tabby.ffr.world.PebbleGenerator;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -46,7 +50,7 @@ public class FloraFaunaRebalance {
     @SubscribeEvent
     // Register items here (Remove if not needed)
     public void registerItems(RegistryEvent.Register<Item> event) {
-        event.getRegistry().registerAll(ii.BONE_HANDLE, ii.FLINT_SHARD, ii.FLINT_KNIFE);
+        event.getRegistry().registerAll(ii.BONE_HANDLE, ii.FLINT_SHARD, ii.FLINT_KNIFE, ii.GRASS_FIBER);
     }
 
     @SubscribeEvent
@@ -54,6 +58,7 @@ public class FloraFaunaRebalance {
         ModelLoader.setCustomModelResourceLocation(ii.BONE_HANDLE, 0, new ModelResourceLocation(ii.BONE_HANDLE.getRegistryName(), "normal"));
         ModelLoader.setCustomModelResourceLocation(ii.FLINT_SHARD, 0, new ModelResourceLocation(ii.FLINT_SHARD.getRegistryName(), "normal"));
         ModelLoader.setCustomModelResourceLocation(ii.FLINT_KNIFE, 0, new ModelResourceLocation(ii.FLINT_KNIFE.getRegistryName(), "normal"));
+        ModelLoader.setCustomModelResourceLocation(ii.GRASS_FIBER, 0, new ModelResourceLocation(ii.GRASS_FIBER.getRegistryName(), "normal"));
     }
 
     @SubscribeEvent
@@ -70,6 +75,7 @@ public class FloraFaunaRebalance {
     @EventHandler
     // load "Do your mod setup. Build whatever data structures you care about." (Remove if not needed)
     public void init(FMLInitializationEvent event) {
+        GameRegistry.registerWorldGenerator(new PebbleGenerator(), 3);
     }
 
     @EventHandler
