@@ -20,8 +20,8 @@ import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.tabby.ffr.Tags;
-import net.tabby.ffr.ii;
-import net.tabby.ffr.sh;
+import net.tabby.ffr.registry.ii;
+import net.tabby.ffr.registry.sh;
 
 import java.util.Random;
 
@@ -68,26 +68,32 @@ public class ev {
         inWorld.spawnEntity(eni);
     }
 
-    protected static float next(Random r, float lwr, float upr) {
+    public static float next(Random r, float lwr, float upr) {
         return lwr + r.nextFloat() * (upr - lwr);
     }
 
+
+
     @SubscribeEvent
-    public static void lowerBreakingSpeed(PlayerEvent.BreakSpeed event) {
+    public static void lowerBreakingSpeed(PlayerEvent.BreakSpeed event) { //# TODO: for 4) same issue as vv but varying breakspeed based on item held
         EntityPlayer ply = event.getEntityPlayer();
         if (ply.getHeldItemMainhand().isEmpty() && !ply.isCreative()) {
             event.setNewSpeed(event.getOriginalSpeed() * 0.5f);
         }
     }
 
+
+
     @SubscribeEvent(priority = EventPriority.LOWEST)
-    public static void preventWoodDrops(BlockEvent.HarvestDropsEvent event) {
-        EntityPlayer hrv = event.getHarvester();
-        if (hrv.getHeldItemMainhand().isEmpty() && !hrv.isCreative()) {
-            if (event.getState().getMaterial() == Material.WOOD) {
+    public static void preventWoodDrops(BlockEvent.HarvestDropsEvent event) { //# TODO: for 1) mining with a seed still gets you logs, for 2) logs can still be split into planks, sticks, for 3) pebbles and falling sand
+        if (event.getState().getMaterial() == Material.WOOD) {
+            EntityPlayer hrv = event.getHarvester();
+            if (hrv.getHeldItemMainhand().isEmpty() && !hrv.isCreative()) {
+                event.getDrops().clear();
+            } else if (hrv.getHeldItemMainhand().getItem().getIsRepairable(hrv.getHeldItemMainhand(), Items.FLINT.getDefaultInstance())) {
                 event.getDrops().clear();
             }
-        }
+        } //# TODO: make table of which Material + tool + block combinations are and aren't mineable; should drop item...
     }
 
     protected static <T> boolean nn(T thing) {
